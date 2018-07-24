@@ -1,15 +1,19 @@
-FROM goodrainapps/maven:jdk8-alpine
+FROM goodrainapps/maven:jdk8-alpine as target
 MAINTAINER zhouyq  <zhouyq@goodrain.com>
 
 # Caching Maven dependencies
 COPY *.xml /app/
 WORKDIR /app
+# RUN mvn -s maven-settings.xml  -Dmaven.repo.local=/tmp/cache dependency:go-offline
 RUN mvn -s maven-settings.xml  verify clean -Dmaven.repo.local=/tmp/cache --fail-never
 
 # package
 COPY . /app
 RUN mvn -s maven-settings.xml -B -DskipTests=true -Dmaven.repo.local=/tmp/cache clean install
 
+# copy jar
+FROM goodrainapps/openjdk:8u131-jre-alpine
+COPY --from=target /app/target/registry.jar /app/
 EXPOSE 8761
 
-CMD ["java", "-Xmx200m", "-jar", "/app/target/registry.jar"]
+CMD ["java", "-Xmx200m", "-jar", "/app/registry.jar"]
