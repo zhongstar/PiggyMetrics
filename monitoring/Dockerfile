@@ -1,7 +1,15 @@
-FROM java:8-jre
-MAINTAINER Alexander Lukyanchikov <sqshq@sqshq.com>
+FROM goodrainapps/maven:jdk8-alpine
+MAINTAINER guox <guox@goodrain.com>
 
-ADD ./target/monitoring.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/monitoring.jar"]
+# Caching Maven dependencies
+COPY *.xml /app/
+WORKDIR /app
+RUN mvn -s maven-settings.xml  verify clean -Dmaven.repo.local=/tmp/cache --fail-never
+
+# package
+COPY . /app
+RUN mvn -s maven-settings.xml -B -DskipTests=true -Dmaven.repo.local=/tmp/cache clean install
 
 EXPOSE 8989 8080
+
+CMD ["java", "-Xmx200m", "-jar", "/app/target/monitoring.jar"]
