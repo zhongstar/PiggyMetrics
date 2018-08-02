@@ -43,7 +43,3 @@ zuul:
 
 server:
   port: 4000
-
-management:
-  security:
-    enabled: false

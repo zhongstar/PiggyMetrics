@@ -25,3 +25,7 @@ security:
 spring:
   rabbitmq:
     host: ${RABBITMQ_HOST}
+
+management:
+  security:
+    enabled: false
