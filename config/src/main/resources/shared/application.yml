@@ -13,17 +13,13 @@ hystrix:
 eureka:
   instance:
     prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
   client:
     serviceUrl:
       defaultZone: http://${REGISTRY_HOST}:${REGISTRY_PORT}/eureka/
-
-eureka:
-  client:
-    healthcheck:
-      enabled: true
-  instance:
-    lease-expiration-duration-in-seconds: 30 
-    lease-renewal-interval-in-seconds: 10
+      healthcheck:
+        enabled: true
 
 security:
   oauth2:
