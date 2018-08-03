@@ -13,4 +13,4 @@ spring:
       port: 0
 
 rates:
-  url: http://fixer.io
+  url: http://exchangeratesapi.io/api

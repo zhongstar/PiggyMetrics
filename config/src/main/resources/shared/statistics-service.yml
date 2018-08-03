@@ -21,4 +21,4 @@ server:
   port: 7000
 
 rates:
-  url: https://fixer.io
+  url: https://exchangeratesapi.io/api

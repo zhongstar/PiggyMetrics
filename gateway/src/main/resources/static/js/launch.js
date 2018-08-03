@@ -80,7 +80,7 @@ $(window).load(function(){
         global.mobileClient = true;
 	}
 
-    $.getJSON("http://fixer.io/latest?base=RUB", function( data ) {
+    $.getJSON("http://exchangeratesapi.io/latest?base=RUB", function( data ) {
         global.eur = 1 / data.rates.EUR;
         global.usd = 1 / data.rates.USD;
     });
