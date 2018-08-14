@@ -19,7 +19,7 @@ zuul:
   routes:
     auth-service:
         path: /uaa/**
-        url: http://${AUTH_HOST}:${AUTH_PORT}
+        url: http://auth-service:5000
         stripPrefix: false
         sensitiveHeaders:
 

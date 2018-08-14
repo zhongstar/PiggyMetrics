@@ -1,7 +1,2 @@
 server:
   port: 8761
-
-eureka:
-  server:
-    enable-self-preservation: false
-    eviction-interval-timer-in-ms: 4000

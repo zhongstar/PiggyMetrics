@@ -3,19 +3,20 @@ security:
     client:
       clientId: account-service
       clientSecret: ${ACCOUNT_SERVICE_PASSWORD}
-      accessTokenUri: http://${AUTH_HOST}:${AUTH_PORT}/uaa/oauth/token
+      accessTokenUri: http://auth-service:5000/uaa/oauth/token
       grant-type: client_credentials
       scope: server
 
 spring:
   data:
     mongodb:
-      host: ${MONGODB_HOST}
-      username: user
-      password: ${MONGODB_PASSWORD}
-      database: piggymetrics
-      port: ${MONGODB_PORT}
+      host: mongodb
+      username: ${MONGO_INITDB_ROOT_USERNAME}
+      password: ${MONGO_INITDB_ROOT_PASSWORD}
+      database: admin
+      port: 27017
 
 server:
-  context-path: /accounts
+  servlet:
+    context-path: /accounts
   port: 6000

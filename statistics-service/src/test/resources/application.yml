@@ -13,4 +13,4 @@ spring:
       port: 0
 
 rates:
-  url: http://exchangeratesapi.io/api
+  url: https://exchangeratesapi.io/api

@@ -10,6 +10,6 @@ RUN mvn -s maven-settings.xml  verify clean -Dmaven.repo.local=/tmp/cache --fail
 COPY . /app
 RUN mvn -s maven-settings.xml -B -DskipTests=true -Dmaven.repo.local=/tmp/cache clean install
 
-EXPOSE 5000
-
 CMD ["java", "-Xmx200m", "-jar", "/app/target/auth-service.jar"]
+
+EXPOSE 5000

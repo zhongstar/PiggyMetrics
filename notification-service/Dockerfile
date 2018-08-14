@@ -10,7 +10,6 @@ RUN mvn -s maven-settings.xml  verify clean -Dmaven.repo.local=/tmp/cache --fail
 COPY . /app
 RUN mvn -s maven-settings.xml -B -DskipTests=true -Dmaven.repo.local=/tmp/cache clean install
 
-EXPOSE 8000
-
 CMD ["java", "-Xmx200m", "-jar", "/app/target/notification-service.jar"]
 
+EXPOSE 8000
