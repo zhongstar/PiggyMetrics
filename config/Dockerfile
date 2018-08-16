@@ -10,6 +10,7 @@ RUN mvn -s maven-settings.xml  verify clean -Dmaven.repo.local=/tmp/cache --fail
 COPY . /app
 RUN mvn -s maven-settings.xml -B -DskipTests=true -Dmaven.repo.local=/tmp/cache clean install
 
-CMD ["java", "-Xmx200m", "-jar", "/app/target/config.jar"]
+ENV PORT=8888
+CMD ["java", "-Xmx200m", "-Dserver.port=${PORT}","-jar", "/app/target/config.jar"]
 
 EXPOSE 8888
