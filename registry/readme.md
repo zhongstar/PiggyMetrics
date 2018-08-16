@@ -52,7 +52,7 @@ docker build -t registry .
 | Name |Default Value |Info|Required|
 |---------|-------------|-------|--------|
 | PORT |8761| Server Port| NO |
-| CONFIG_PASS| NULL | Service Password|Yes|
+| CONFIG_PASS| NULL | Config Service Password|Yes|
 
 ## 3. Local test
 

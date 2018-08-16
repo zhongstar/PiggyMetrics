@@ -1,8 +1,12 @@
-# Gateway service
+# Registry service
 
-## 1. Build gateway service docker image
+## 1.Service dependency
 
-### 1.1 Modify maven.xml to adapt to your environment
+![](./gateway.png)
+
+## 2. Build registry service docker image
+
+### 2.1 Modify maven.xml to adapt to your environment
 
 default maven-settings.xml adapt rainbond
 ```xml
@@ -25,22 +29,22 @@ default maven-settings.xml adapt rainbond
 
 ```
 
-### 1.2 Build gateway image
+### 2.2 Build image
 
 ```bash
-docker build -t gateway .
+docker build -t registry .
 ```
 
 ## 3. ENV
 
 | Name |Default Value |Info|Required|
 |---------|-------------|-------|--------|
-| PORT |4000| Server Port| NO |
-| CONFIG_SERVICE_PASSWORD| NULL | Service Password|Yes|
+| PORT |8761| Server Port| NO |
+| CONFIG_PASS| NULL | Config Service Password|Yes|
 
 ## 3. Local test
 
 ```bash
-docker run -it -e CONFIG_SERVICE_PASSWORD=pass4you config
+docker run -it -e CONFIG_PASS=pass4you gateway
 ```
 
