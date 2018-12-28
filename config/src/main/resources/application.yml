@@ -1,6 +1,7 @@
 spring:
   cloud:
     config:
+      fail-fast: false
       server:
         native:
           search-locations: classpath:/shared
